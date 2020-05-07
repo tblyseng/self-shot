@@ -1,8 +1,5 @@
 (function() {
-  // The width and height of the captured photo. We will set the
-  // width to the value defined here, but the height will be
-  // calculated based on the aspect ratio of the input stream.
-
+  
   var width = 320;    // We will scale the photo width to this
   var height = 0;     // This will be computed based on the input stream
 
@@ -38,9 +35,6 @@
       if (!streaming) {
         height = video.videoHeight / (video.videoWidth/width);
       
-        // Firefox currently has a bug where the height can't be read from
-        // the video, so we will make assumptions if this happens.
-      
         if (isNaN(height)) {
           height = width / (4/3);
         }
@@ -60,9 +54,6 @@
     
     clearphoto();
   }
-
-  // Fill the photo with an indication that none has been
-  // captured.
 
   function clearphoto() {
     var context = canvas.getContext('2d');
