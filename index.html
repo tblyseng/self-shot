@@ -1,33 +1,79 @@
 <!doctype html>
 <html>
 <head>
-	<title>Self-Shot: Still photo selfie and store</title>
+	<title>Self-Shot: camera and local file image capture</title>
 	<meta charset='utf-8'>
-	<link rel="stylesheet" href="main.css" type="text/css" media="all">
-	<script src="capture.js">
-	</script>
+	<link rel="stylesheet" href="normalize.css" type="text/css" media="all">
+	<link rel="stylesheet" href="style.css" type="text/css" media="all">
+	<meta name="viewport" content="width= device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
 </head>
 <body>
+	<header>
+		<div class="header-title">
+		  <h1>Self-Shot</h1>
+		</div>
+		<div id="search-field">
+		  <input type="search" id="search" class="search" placeholder="Search">
+		  <button id="search-btn" class="search"><i class="fas fa-search"></i></button>
+		</div>
+	</header>
+  
 <div class="contentarea">
-	<h1>
-		Self-Shot: Still photo capture 
-	</h1>
-	<p>
-		This example demonstrates how to set up a media stream using your built-in webcam, 
-		fetch an image from that stream, create a PNG using that image, and store on your local storage.
-	</p>
-  <div class="camera">
+	
+	<p>This project demonstrates how to set up a media stream using your built-in webcam, 
+	fetch an image from that stream, create a PNG using that image, and store on your local storage.</p>
+  
+	<div class="grid1">
+	<h2>Take a photo with your camera.</h2>
+    <div class="camera">
     <video id="video">Video stream not available.</video>
     <button id="startbutton">Take photo</button> 
+    </div>
+    <canvas id="canvas"></canvas>
+	<div class="output">
+    <img id="image" alt="The screen capture will appear in this box."> 
+	</div>
+	<br><br>
   </div>
-  <canvas id="canvas">
-  </canvas>
-  <div class="output">
-    <img id="photo" alt="The screen capture will appear in this box."> 
+
+  <div class="grid2">
+	<h2>Or...select an image file from local storage.</h2>
+	<input class="choose-file-btn" id="select" type="file" accept="image/*"></input>
+	<label for="select">Choose File</label>
+	<br>
+	<img id="prev" alt="The file image will appear in this box.">
+	<br>
   </div>
-	<p>
-		Capstone project for WEB III class
-	</p>
 </div>
+
+<section class="photo-input">
+	<form action="">
+	  <h2 class="photo-input-form" id="photo-title">Image Title</h2>
+	  <input class="photo-input-form" id="title-input" class="photo-input" maxlength="50"></input>
+	  
+	  <div class="buttons">
+		<button class="btn" id="add-self-to-album">Add photo to Album</button>
+		<p id="add-or">OR</p>
+		<button class="btn" id="add-to-album">Add file to Album</button>		
+	  </div>
+
+	  <button class="btn" id="view-favorite">View <span class="num-favs">0</span> Favorites</button>
+	  <br>
+	</form>
+  </section>
+
+  <section class="photos">
+  </section>
+  <section class="msg">
+	<h4 id="add-photo">Please Add a Photo</h4>
+	<button class="show-more-btn" id="show-more">Show More...</button>
+  </section>
+
 </body>
+<script type="text/javascript" src="capture.js"></script>
+<script type="text/javascript" src="photos.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </html>
